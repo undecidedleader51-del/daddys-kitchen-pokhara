@@ -208,30 +208,44 @@ window.addEventListener('scroll', () => {
 
 // Counter animation for stats
 function animateCounters() {
+    const statsSection = document.querySelector('.about-section');
     const counters = document.querySelectorAll('.stat h3');
+    let hasAnimated = statsSection.dataset.animated === 'true';
     
-    counters.forEach(counter => {
-        const target = parseInt(counter.textContent);
-        const increment = target / 100;
-        let current = 0;
+    // Only animate ONCE when section is visible
+    if (!hasAnimated && window.scrollY > 1500) {
+        statsSection.dataset.animated = 'true';
         
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.textContent = Math.floor(current) + (current % 1 > 0.5 ? '+' : '');
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target + (counter.parentElement.querySelector('p').textContent.includes('Star') ? '' : '+');
-            }
-        };
-        
-        if (window.scrollY > 2000) {
+        counters.forEach(counter => {
+            const target = parseInt(counter.textContent);
+            const increment = target / 100;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.ceil(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target + (target === 5 ? '★' : '+');
+                }
+            };
             updateCounter();
-        }
-    });
+        });
+    }
 }
 
-window.addEventListener('scroll', animateCounters);
+// Only check when scrolling past about section
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            animateCounters();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
 
 // WhatsApp button pulse animation
 setInterval(() => {
