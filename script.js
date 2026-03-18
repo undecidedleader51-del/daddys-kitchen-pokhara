@@ -132,46 +132,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // *** UPDATED initMap FUNCTION (Lines 140-170) ***
 function initMap() {
-    // Exact coordinates for Daddy's Kitchen Pokhara - Lakeside Road, Pokhara-6
-    const daddysKitchen = { lat: 28.2164, lng: 83.9171 }; // Lakeside, Pokhara-6
+    // ✅ EXACT Daddy's Kitchen Pokhara Location
+    const daddyKitchen = {
+        lat: 28.216437,  // Lakeside Road, Pokhara-6
+        lng: 83.917124
+    };
     
     const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: daddysKitchen,
-        styles: [
-            {
-                featureType: 'water',
-                elementType: 'geometry',
-                stylers: [{ color: '#1a1a1a' }]
-            },
-            {
-                featureType: 'landscape',
-                elementType: 'geometry',
-                stylers: [{ color: '#2F4F2F' }]
-            },
-            {
-                featureType: 'poi',
-                elementType: 'labels.text',
-                stylers: [{ color: '#FF9933' }]
-            }
-        ]
+        zoom: 17,
+        center: daddyKitchen,
+        mapTypeId: 'roadmap'
     });
     
+    // Custom Marker with Info Window
     const marker = new google.maps.Marker({
-        position: daddysKitchen,
+        position: daddyKitchen,
         map: map,
-        title: "Daddy's Kitchen Pokhara - Lakeside Rd, Pokhara-6",
+        title: "Daddy's Kitchen Pokhara",
         icon: {
-            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                <svg width="45" height="55" viewBox="0 0 45 55" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.5 0C13.5 11 0 27.5 0 38.5a11 11 0 0 0 22 0c0-11-13.5-27.5 0-38.5z" fill="%23FF9933"/>
-                    <circle cx="22.5" cy="22" r="9" fill="%23FFD700"/>
-                    <circle cx="22.5" cy="22" r="4" fill="%23FFFFFF"/>
-                    <text x="22.5" y="26" text-anchor="middle" fill="%23FF9933" font-size="8" font-weight="bold">DK</text>
+            url: 'data:image/svg+xml;base64,' + btoa(`
+                <svg width="50" height="60" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 0C15 12 0 30 0 42a12 12 0 0 0 24 0c0-12-15-30 0-42z" fill="#FF9933"/>
+                    <circle cx="25" cy="25" r="10" fill="#FFD700"/>
+                    <text x="25" y="30" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="bold">DK</text>
                 </svg>
             `)
         }
     });
+    
+    // Click Info Window
+    const infoWindow = new google.maps.InfoWindow({
+        content: `
+            <div style="padding:15px; min-width:200px;">
+                <h3 style="color:#FF9933; margin:0 0 10px 0;">🍽️ Daddy's Kitchen</h3>
+                <p><strong>📍 Address:</strong><br>Lakeside Road<br>Pokhara-6, Kaski</p>
+                <p><strong>📞 Phone:</strong> 061-457967</p>
+                <p><strong>🕒 Hours:</strong> 11AM - 10PM</p>
+            </div>
+        `
+    });
+    
+    marker.addListener('click', () => infoWindow.open(map, marker));
+}
 
     // Add info window
     const infoWindow = new google.maps.InfoWindow({
