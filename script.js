@@ -129,62 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 });
-
-// *** UPDATED initMap FUNCTION (Lines 140-170) ***
-function initMap() {
-    // ✅ EXACT Daddy's Kitchen Pokhara Location
-    const daddyKitchen = {
-        lat: 28.216437,  // Lakeside Road, Pokhara-6
-        lng: 83.917124
-    };
-    
-    const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 17,
-        center: daddyKitchen,
-        mapTypeId: 'roadmap'
-    });
-    
-    // Custom Marker with Info Window
-    const marker = new google.maps.Marker({
-        position: daddyKitchen,
-        map: map,
-        title: "Daddy's Kitchen Pokhara",
-        icon: {
-            url: 'data:image/svg+xml;base64,' + btoa(`
-                <svg width="50" height="60" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25 0C15 12 0 30 0 42a12 12 0 0 0 24 0c0-12-15-30 0-42z" fill="#FF9933"/>
-                    <circle cx="25" cy="25" r="10" fill="#FFD700"/>
-                    <text x="25" y="30" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="bold">DK</text>
-                </svg>
-            `)
-        }
-    });
-    
-    // Click Info Window
-    const infoWindow = new google.maps.InfoWindow({
-        content: `
-            <div style="padding:15px; min-width:200px;">
-                <h3 style="color:#FF9933; margin:0 0 10px 0;">🍽️ Daddy's Kitchen</h3>
-                <p><strong>📍 Address:</strong><br>Lakeside Road<br>Pokhara-6, Kaski</p>
-                <p><strong>📞 Phone:</strong> 061-457967</p>
-                <p><strong>🕒 Hours:</strong> 11AM - 10PM</p>
-            </div>
-        `
-    });
-    
-    marker.addListener('click', () => infoWindow.open(map, marker));
-}
-
-    // Add info window
-    const infoWindow = new google.maps.InfoWindow({
-        content: '<div style="padding: 10px;"><h3>🍽️ Daddy\'s Kitchen</h3><p>Lakeside Road<br>Pokhara-6, Kaski<br>📞 061-457967</p></div>'
-    });
-
-    marker.addListener('click', () => {
-        infoWindow.open(map, marker);
-    });
-}
-
 // Form floating labels effect
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(input => {
