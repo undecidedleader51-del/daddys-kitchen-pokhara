@@ -31,8 +31,6 @@
             </div>
         </nav>
     </header>
-
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Welcome to <span>Daddy's Kitchen</span></h1>
@@ -46,8 +44,6 @@
             <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Daddy's Kitchen">
         </div>
     </section>
-
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
@@ -79,8 +75,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Menu Section -->
     <section id="menu" class="menu">
         <div class="container">
             <div class="section-header">
@@ -156,8 +150,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
             <div class="section-header">
@@ -186,8 +178,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
@@ -242,8 +232,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -271,32 +259,30 @@
             </div>
         </div>
     </footer>
-
-    <script>
         // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
 
-        hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Menu tabs functionality
+// Menu tabs functionality
         const tabBtns = document.querySelectorAll('.tab-btn');
         const menuGrids = document.querySelectorAll('.menu-grid');
 
-        tabBtns.forEach(btn => {
+tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 tabBtns.forEach(b => b.classList.remove('active'));
                 menuGrids.forEach(g => g.classList.remove('active'));
                 
-                btn.classList.add('active');
+btn.classList.add('active');
                 document.querySelector(`[data-tab="${btn.dataset.tab}"]`).classList.add('active');
             });
         });
 
-        // Smooth scrolling for navigation links
+// Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -310,20 +296,20 @@
             });
         });
 
-        // Form submission
+// Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
 
-        // Active nav link on scroll
+// Active nav link on scroll
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-menu a');
 
-            sections.forEach(section => {
+sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 if (scrollY >= (sectionTop - 200)) {
@@ -331,7 +317,7 @@
                 }
             });
 
-            navLinks.forEach(link => {
+navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
