@@ -1,325 +1,33 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daddy's Kitchen Pokhara - Best Food in Pokhara</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #ffd700;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23ff6b35" width="1200" height="800"/><circle fill="%23f7931e" cx="300" cy="200" r="150"/><circle fill="%23ffd700" cx="900" cy="300" r="100"/><rect fill="%23333" x="200" y="500" width="200" height="200" rx="20"/></svg>');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 70px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #ffd700;
-            color: #333;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-padding {
-            padding: 0 2rem;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            color: #ff6b35;
-        }
-
-        /* About Section */
-        .about {
-            background: #f8f9fa;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Menu Section */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .menu-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 1rem;
-        }
-
-        .menu-item h3 {
-            color: #ff6b35;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #f7931e;
-            margin: 1rem 0;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item i {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            width: 30px;
-        }
-
-        .contact-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.9);
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: #ff6b35;
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .section-padding {
-                padding: 0 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <nav>
-            <a href="#" class="logo">🍽️ Daddy's Kitchen</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h2><i class="fas fa-utensils"></i> Daddy's Kitchen</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
@@ -327,115 +35,268 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Daddy's Kitchen</h1>
-            <p>Best Food Experience in Pokhara<br>Nepali & Continental Delights</p>
-            <a href="#menu" class="cta-button">View Our Menu</a>
+            <h1>Welcome to <span>Daddy's Kitchen</span></h1>
+            <p>Authentic Nepali & Continental Flavors from Pokhara</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">View Menu</a>
+                <a href="#contact" class="btn btn-secondary">Book Table</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Daddy's Kitchen">
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section about">
-        <div class="section-padding">
-            <h2>About Us</h2>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Discover the heart of Pokhara's culinary scene</p>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Daddy's Kitchen Pokhara brings you the authentic taste of Nepal combined with international flavors. Located in the heart of beautiful Pokhara, we serve fresh, delicious food made with love and traditional recipes.</p>
-                    <p>From momos to momo burgers, thukpa to pizzas, we have something for everyone. Come enjoy our cozy ambiance with lake views and friendly service!</p>
+                    <h3>Family Recipes with Love</h3>
+                    <p>Daddy's Kitchen brings you the authentic taste of Nepal combined with international flavors. Established in the beautiful city of Pokhara, we serve fresh, homemade food prepared with love and traditional recipes passed down through generations.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <span>Fresh Ingredients</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-fire"></i>
+                            <span>Live Cooking</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Service</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23f8f9fa' width='400' height='300'/><rect fill='%23ff6b35' x='50' y='50' width='300' height='200' rx='20'/><circle fill='%23ffd700' cx='200' cy='150' r='80'/><rect fill='%23f7931e' x='100' y='220' width='200' height='30' rx='5'/></svg>" alt="Restaurant Interior">
+                    <img src="https://images.unsplash.com/photo-1579586140626-3efb9c394a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kitchen">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="section">
-        <div class="section-padding">
-            <h2>Our Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23ff6b35' width='300' height='200' rx='15'/><circle fill='%23fff' cx='75' cy='75' r='30'/><circle fill='%23fff' cx='225' cy='75' r='30'/><rect fill='%23f7931e' x='100' y='120' width='100' height='40' rx='5'/></svg>" alt="Momo">
-                    <h3>Chicken Momo</h3>
-                    <p class="price">NPR 250</p>
-                    <p>Juicy chicken dumplings served with spicy tomato chutney</p>
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <p>Delicious dishes made with love</p>
+            </div>
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-tab="nepali">Nepali</button>
+                <button class="tab-btn" data-tab="continental">Continental</button>
+                <button class="tab-btn" data-tab="desserts">Desserts</button>
+            </div>
+            <div class="menu-content">
+                <div class="menu-grid active" data-tab="nepali">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Momo">
+                        <h4>Chicken Momo</h4>
+                        <p>Juicy steamed dumplings with spicy chutney</p>
+                        <span class="price">NPR 350</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1632849735925-7653b9ab8f96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thakali">
+                        <h4>Thakali Set</h4>
+                        <p>Complete traditional meal with dal bhat</p>
+                        <span class="price">NPR 450</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1579586140626-3efb9c394a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sekuwa">
+                        <h4>Chicken Sekuwa</h4>
+                        <p>Grilled chicken skewers with spices</p>
+                        <span class="price">NPR 400</span>
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><circle fill='%23ffd700' cx='150' cy='100' r='90'/><rect fill='%23f7931e' x='120' y='140' width='60' height='30' rx='5'/><rect fill='%23ff6b35' x='80' y='60' width='140' height='20' rx='3'/></svg>" alt="Pizza">
-                    <h3>Margherita Pizza</h3>
-                    <p class="price">NPR 450</p>
-                    <p>Fresh mozzarella, tomatoes & basil on thin crust</p>
+                <div class="menu-grid" data-tab="continental">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1529699211951-766dc982dbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pizza">
+                        <h4>Margherita Pizza</h4>
+                        <p>Fresh mozzarella and basil pizza</p>
+                        <span class="price">NPR 650</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pasta">
+                        <h4>Penne Arrabbiata</h4>
+                        <p>Spicy tomato pasta with garlic</p>
+                        <span class="price">NPR 550</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1541599468178-a16d83a6efcd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Burger">
+                        <h4>Classic Burger</h4>
+                        <p>Juicy beef patty with fresh toppings</p>
+                        <span class="price">NPR 500</span>
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><rect fill='%23333' x='50' y='50' width='200' height='100' rx='10'/><rect fill='%23ff6b35' x='70' y='70' width='160' height='20'/><rect fill='%23f7931e' x='70' y='100' width='160' height='20'/><circle fill='%23ffd700' cx='150' cy='170' r='15'/></svg>" alt="Thukpa">
-                    <h3>Chicken Thukpa</h3>
-                    <p class="price">NPR 320</p>
-                    <p>Traditional Nepali noodle soup with chicken & vegetables</p>
+                <div class="menu-grid" data-tab="desserts">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gulab Jamun">
+                        <h4>Gulab Jamun</h4>
+                        <p>Sweet syrupy dough balls</p>
+                        <span class="price">NPR 150</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ice Cream">
+                        <h4>Sel Roti</h4>
+                        <p>Traditional Nepali rice doughnut</p>
+                        <span class="price">NPR 120</span>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1562440499-64e1949af8ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lassi">
+                        <h4>Mango Lassi</h4>
+                        <p>Creamy yogurt drink with mango</p>
+                        <span class="price">NPR 180</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Moments from Daddy's Kitchen</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1579586140626-3efb9c394a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529699211951-766dc982dbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1541599468178-a16d83a6efcd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food 6">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact">
-        <div class="section-padding">
-            <h2 style="color: white;">Visit Us</h2>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Visit us in beautiful Pokhara</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>📍 Lakeside, Pokhara</h3>
                     <div class="contact-item">
-                        <span>📱</span>
+                        <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <strong>+977 980-1234567</strong><br>
-                            10AM - 10PM Daily
+                            <h4>Location</h4>
+                            <p>Lakeside, Pokhara, Nepal</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span>📧</span>
+                        <i class="fas fa-phone"></i>
                         <div>
-                            <strong>daddyskitchenpokhara@gmail.com</strong>
+                            <h4>Phone</h4>
+                            <p>+977 980-1234567</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span>📍</span>
+                        <i class="fas fa-envelope"></i>
                         <div>
-                            <strong>Lakeside Road 6, Pokhara</strong><br>
-                            Near Fewa Lake
+                            <h4>Email</h4>
+                            <p>daddyskitchen@email.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>10AM - 11PM Daily</p>
                         </div>
                     </div>
                 </div>
                 <form class="contact-form">
+                    <h3>Send us a message</h3>
                     <div class="form-group">
                         <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
                         <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="Your Phone">
+                        <input type="tel" placeholder="Phone Number">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="cta-button">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Daddy's Kitchen Pokhara. All rights reserved. | Made with ❤️ in Pokhara</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-utensils"></i> Daddy's Kitchen</h3>
+                    <p>Your favorite food destination in Pokhara. Taste the tradition!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Daddy's Kitchen Pokhara. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <script>
         // Mobile menu toggle
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
 
-        // Smooth scrolling
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Menu tabs functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const menuGrids = document.querySelectorAll('.menu-grid');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                menuGrids.forEach(g => g.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.querySelector(`[data-tab="${btn.dataset.tab}"]`).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -452,20 +313,30 @@
         // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will contact you soon. 🍽️');
+            alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
 
-        // Navbar background on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 107, 53, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #ff6b35, #f7931e)';
-                header.style.backdropFilter = 'none';
-            }
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
